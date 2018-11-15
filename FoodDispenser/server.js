@@ -37,6 +37,8 @@ const onError = error => {
   }
 };
 
+
+
 const onListening = () => {
   const addr = server.address();
   const bind = typeof port === "string" ? "pipe " + port : "port " + port;
@@ -50,3 +52,4 @@ const server = http.createServer(app);
 server.on("error", onError);
 server.on("listening", onListening);
 server.listen(port);
+console.log('Server is running on Port: ' + port);
