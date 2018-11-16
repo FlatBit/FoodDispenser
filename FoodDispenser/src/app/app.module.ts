@@ -7,16 +7,13 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { IncrementSelectorComponent } from './increment-selector/increment-selector.component';
 import { ItemSelectorComponent } from './item-selector/item-selector.component';
-import { OrderSelectorComponent } from './order-selector/order-selector.component';
-import { OrderComponent } from './order/order.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     IncrementSelectorComponent,
-    ItemSelectorComponent,
-    OrderSelectorComponent,
-    OrderComponent
+    ItemSelectorComponent
   ],
   imports: [
     BrowserModule,
