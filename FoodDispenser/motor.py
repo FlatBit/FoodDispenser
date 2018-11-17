@@ -15,8 +15,7 @@ GPIO.setup(ENA, GPIO.OUT)
 
 quarters = sys.argv[1]
 
-
-SleepTime = 0.00015625
+SleepTime = 0.0001
 stepMul = 4 / 4 * int(quarters)
 StepsPerRotation = 200 * stepMul
 
@@ -25,7 +24,7 @@ GPIO.output(DIR, GPIO.HIGH) #Set rotation direction counter-clockwise
 
 
 print ("Move Backward")
-for i in range (StepsPerRotation):
+for i in range (int(StepsPerRotation)):
 	GPIO.output(PUL, GPIO.HIGH)
 	time.sleep(SleepTime)
 	GPIO.output(PUL, GPIO.LOW)
