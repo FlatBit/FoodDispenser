@@ -1,8 +1,7 @@
 const express = require('express');
-const PythonShell = require('python-shell');
+const ps = require('python-shell');
 
 const app = express();
-
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -17,7 +16,9 @@ app.use((req, res, next) => {
 app.post('/api/order', (req, res, next) => {
   res.status(201);
   res.send({ message: "Message received!"});
-  PythonShell.run('motor.py', { args: ['4'] }, function (err, results){
+  ps.PythonShell.run('motor.py', { args: ['10'] }, function (err, results){
+    console.log(err);
+    console.log(results);
   });
   /*
   const stepper = execFile('python motor.py 4', (error, stdout, stderr) => {
