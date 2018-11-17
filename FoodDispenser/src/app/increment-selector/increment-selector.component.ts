@@ -20,6 +20,7 @@ export class IncrementSelectorComponent implements OnInit {
   private id = 0;
   public product: Product;
   private incrementBy = 15;
+  public infoText = '';
 
   constructor(
     private orderService: OrderService,
@@ -38,6 +39,8 @@ export class IncrementSelectorComponent implements OnInit {
    this.loadProduct();
   }
 
+
+  // TODO: Move this Functions to a service
   loadProduct(): void {
     // this.product.productID = +this.route.snapshot.paramMap.get('id');
     this.getProduct(this.id);
@@ -47,6 +50,9 @@ export class IncrementSelectorComponent implements OnInit {
     this.http.get(`../../assets/descritpion/${productID}.json`)
       .subscribe( product => {
         this.product = product as Product;
+        this.incrementBy = this.product.amount as number;
+        this.infoText = `How much ${this.product.name} do you want?`;
+        console.log(this.incrementBy);
         console.log(this.product);
       });
   }
@@ -62,6 +68,7 @@ export class IncrementSelectorComponent implements OnInit {
 
   clickHandlerPlus() {
     this.amount += this.incrementBy;
+    console.log(this.amount);
   }
 
   sendOrder(): void {
