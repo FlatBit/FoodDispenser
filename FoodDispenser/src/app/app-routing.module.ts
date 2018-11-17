@@ -7,7 +7,6 @@ import { ItemSelectorComponent } from './item-selector/item-selector.component';
 const routes: Routes = [
   { path: '', component: ItemSelectorComponent},
   { path: 'incrementselector/:id', component: IncrementSelectorComponent }
-
 ];
 
 @NgModule({

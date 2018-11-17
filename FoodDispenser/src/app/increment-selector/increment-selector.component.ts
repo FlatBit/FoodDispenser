@@ -3,8 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { OrderService } from './../order.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { Observable } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { Observable, observable } from 'rxjs';
 import { Product } from '../product.model';
 
 
@@ -19,6 +18,7 @@ export class IncrementSelectorComponent implements OnInit {
   public amount = 0;
   private id = 0;
   public product: Product;
+  public productObservable: Observable<Product>;
   private incrementBy = 15;
   public infoText = '';
 
@@ -47,16 +47,15 @@ export class IncrementSelectorComponent implements OnInit {
   }
 
   getProduct(productID: number): void {
-    this.http.get(`../../assets/descritpion/${productID}.json`)
-      .subscribe( product => {
-        this.product = product as Product;
-        this.incrementBy = this.product.amount as number;
+    this.productObservable = this.http.get<Product>(`../../assets/descritpion/${productID}.json`);
+      this.productObservable.subscribe( product => {
+        this.product = product;
+        this.incrementBy = this.product.amount;
         this.infoText = `How much ${this.product.name} do you want?`;
         console.log(this.incrementBy);
         console.log(this.product);
       });
   }
-
 
   // Event Handlers
 
@@ -67,7 +66,7 @@ export class IncrementSelectorComponent implements OnInit {
   }
 
   clickHandlerPlus() {
-    this.amount += this.incrementBy;
+    this.amount += +this.incrementBy;
     console.log(this.amount);
   }
 

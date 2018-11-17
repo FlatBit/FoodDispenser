@@ -1,5 +1,5 @@
-<div class="container">
-  <p></p>
+<div *ngIf="productObservable | async as product" class="container">
+  <p> How much of {{product.name}} ?</p>
   <div class="row">
     <div class="handle-counter" id="handleCounter">
       <button class="counter-minus btn btn-primary" (click)="clickHandlerMinus()">-</button>
