@@ -15,6 +15,7 @@ import { Order } from './../order.model';
 export class OrderListComponent implements OnInit {
 
   public orders: Order[];
+  public orderObservable: Observable<Order[]>;
 
   constructor(private orderService: OrderService,
               private route: ActivatedRoute,
@@ -22,9 +23,12 @@ export class OrderListComponent implements OnInit {
               private http: HttpClient) { }
 
   ngOnInit() {
-    // TODO: Call getOrders
-    this.orderService.getOrders()
-      .subscribe();
+    // TODO: Set Observable async
+    this.orderObservable =  this.orderService.getOrders();
+    this.orderObservable.subscribe( orders => {
+        this.orders = orders;
+        console.log(this.orders);
+    });
   }
 
 

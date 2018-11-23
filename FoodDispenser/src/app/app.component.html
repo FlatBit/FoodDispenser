@@ -1,2 +1,12 @@
-
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <p class="navbar-brand" href="#">Fooddispenser</p>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a [routerLink]="['']">Home</a></li>
+      <li><a [routerLink]="['/orders']">Orders</a></li>
+    </ul>
+  </div>
+</nav>
 <router-outlet></router-outlet>

@@ -48,13 +48,13 @@ export class IncrementSelectorComponent implements OnInit {
 
   getProduct(productID: number): void {
     this.productObservable = this.http.get<Product>(`../../assets/descritpion/${productID}.json`);
-      this.productObservable.subscribe( product => {
-        this.product = product;
-        this.incrementBy = this.product.amount;
-        this.infoText = `How much ${this.product.name} do you want?`;
-        console.log(this.incrementBy);
-        console.log(this.product);
-      });
+    this.productObservable.subscribe( product => {
+      this.product = product;
+      this.incrementBy = this.product.amount;
+      this.infoText = `How much ${this.product.name} do you want?`;
+      console.log(this.incrementBy);
+      console.log(this.product);
+    });
   }
 
   // Event Handlers

@@ -1,12 +1,16 @@
 const express = require('express');
 const ps = require('python-shell');
-const mongoose = require('./models/order');
+const mongoose = require('mongoose');
 
 const Order = require('./models/order');
 
 const app = express();
 
-mongoose.connect(`mongodb+srv://Fooddispenser:rIqsy5-jepqir-gifdaq@fooddispenser-xhsap.mongodb.net/test?retryWrites=true`)
+
+mongoose
+  .connect(
+    "mongodb+srv://Group8:RedHotChiliPeppers@fooddispenser-xhsap.mongodb.net/test?retryWrites=true"
+  )
   .then(() => {
     console.log('Connected to database!');
   })
@@ -24,10 +28,10 @@ app.use((req, res, next) => {
 });
 
 
-app.get('path', (req, res, next) => {
+app.get('/api/order', (req, res, next) => {
   Order.find().then(documents => {
 		res.status(200).json({
-			message: "Posts fetched successfully!",
+			message: "Orders fetched successfully!",
 			posts: documents
 		});
 		console.log(documents);
@@ -36,18 +40,20 @@ app.get('path', (req, res, next) => {
 
 app.post('/api/order', (req, res, next) => {
   //MongoDB
-  const post = new Post({
-		title: req.body.title,
-		content: req.body.conten
+  const order = new Order({
+		productID: 10,
+		amount: 18
   });
-  post.save();
+  order.save();
 
   res.status(201);
   res.send({ message: "Message received!"});
+  /*
   ps.PythonShell.run('motor.py', { args: ['10'] }, function (err, results){
     console.log(err);
     console.log(results);
   });
+  */
 });
 
 app.delete("/api/posts/:id", (req, res, next) => {
