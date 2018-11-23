@@ -33,6 +33,34 @@ export class OrderService {
       });
   }
 
+  getOrders(): Order[] {
+    return this.http.get<order: Order[]>(this.orderUrl).pipe(
+      tap(_ => this.log('fetched orders')),
+      catchError(this.handleError('getOrders', []))
+    );
+  }
+
+  etPosts(){
+    this.http
+      .get<{ message: string; posts: Post[] }>(
+        "route"
+      )
+      .pipe(map((postData) => {
+        return postData.posts.map(post => {
+          return {
+            title: post.title,
+            content: post.content,
+            id: post._id
+          };
+        });
+      }))
+      .subscribe(transformedPosts => {
+        this.posts = transformedPosts;
+        this.postsUpdated.next(p...this.posts]);
+      });
+  }
+
+
 
 
   private log(message: string) {

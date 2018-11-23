@@ -1,0 +1,26 @@
+
+
+<div class="container">
+  <table id="userTable" class="table table-striped">
+      <thead>
+          <tr>
+              <th>Id</th>
+              <th>Firstname</th>
+              <th>Lastname</th>
+              <th>Actions</th>
+          </tr>
+      </thead>
+      <tbody id="tableContent">
+        <tr *ngFor="let order of order">
+          <td>{{order.id}}</td>
+          <td>{{order.productID}}</td>
+          <td>{{order.amount}}</td>
+          <td>
+            <button class="btn btn-warning" data-toggle="modal" data-target="#myModal" onclick="showEditModal(' + user.id + ')">Edit</button>
+            <h1></h1>
+            <button class="btn btn-danger" onclick="deleteUser(' + user.id + ')">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+  </table>
+</div>
