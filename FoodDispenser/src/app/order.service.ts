@@ -20,6 +20,7 @@ const x = {
 export class OrderService {
 
   private orderUrl = 'http://localhost:3000/api/order';
+  private orders: Order[];
 
   constructor(private http: HttpClient) { }
 
@@ -34,14 +35,17 @@ export class OrderService {
   }
 
   getOrders(): Observable<any> {
-    return this.http.get<any>(this.orderUrl)
-      .pipe(map((orderData) => {
+    return this.http
+    .get<any>(this.orderUrl)
+    .pipe(map((orderData) => {
+        return orderData.posts.map(post => {
           return {
-            id: orderData._id,
-            productID: orderData.productID,
-            amount: orderData.amount
+            id: post._id,
+            productID: post.productID,
+            amount: post.amount
           };
-        }));
+        });
+    }));
   }
 
 

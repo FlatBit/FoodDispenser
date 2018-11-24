@@ -24,10 +24,9 @@ export class OrderListComponent implements OnInit {
 
   ngOnInit() {
     // TODO: Set Observable async
-    this.orderObservable =  this.orderService.getOrders();
-    this.orderObservable.subscribe( orders => {
-        this.orders = orders;
-        console.log(this.orders);
+    this.orderObservable = this.orderService.getOrders();
+    this.orderObservable.subscribe(orders => {
+      this.orders = orders;
     });
   }
 

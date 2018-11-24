@@ -34,7 +34,6 @@ app.get('/api/order', (req, res, next) => {
 			message: "Orders fetched successfully!",
 			posts: documents
 		});
-		console.log(documents);
 	});
 });
 
