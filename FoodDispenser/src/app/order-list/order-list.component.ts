@@ -30,5 +30,16 @@ export class OrderListComponent implements OnInit {
     });
   }
 
+  deleteOrder(id: string) {
+    this.orderService.deleteOrder(id);
+    const element = this.orders.find(orderElement => orderElement.id === id);
+      console.log(element);
+      const index = this.orders.indexOf(element, 0);
+        if (index > -1) {
+          this.orders.splice(index, 1);
+        }
+  }
+
+
 
 }

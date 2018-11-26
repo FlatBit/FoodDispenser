@@ -18,7 +18,7 @@
           <td>
             <button class="btn btn-warning" data-toggle="modal" data-target="#myModal" onclick="showEditModal(' + user.id + ')">Edit</button>
             <h1></h1>
-            <button class="btn btn-danger" onclick="deleteUser(' + user.id + ')">Delete</button>
+            <button class="btn btn-danger" (click) = "deleteOrder(order.id)">Delete</button>
           </td>
         </tr>
       </tbody>

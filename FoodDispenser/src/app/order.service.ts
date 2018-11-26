@@ -20,7 +20,7 @@ const x = {
 export class OrderService {
 
   private orderUrl = 'http://localhost:3000/api/order';
-  private orders: Order[];
+  public orders: Order[];
 
   constructor(private http: HttpClient) { }
 
@@ -46,6 +46,13 @@ export class OrderService {
           };
         });
     }));
+  }
+
+  deleteOrder(orderID: string) {
+    this.http.delete(this.orderUrl + '/' + orderID)
+      .subscribe(() => {
+        console.log(` ${this.orderUrl + '/' + orderID} Deleted!`);
+      });
   }
 
 

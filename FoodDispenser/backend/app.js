@@ -37,6 +37,7 @@ app.get('/api/order', (req, res, next) => {
 	});
 });
 
+
 app.post('/api/order', (req, res, next) => {
   //MongoDB
   const order = new Order({
@@ -55,12 +56,13 @@ app.post('/api/order', (req, res, next) => {
   */
 });
 
-app.delete("/api/posts/:id", (req, res, next) => {
-  Post.deleteOne({_id: req.params.id}).then( result => {
-    console.log(result);
-    res.status(200).json({ message: "sdfsdf" });
-  });
+app.delete("/api/order/:orderID", (req, res, next) => {
+	Order.deleteOne({_id: req.params.orderID}).then( result => {
+		console.log(result);
+		res.status(200).json({ message: "Entry Deleted on MongoDB! " });
+	});
 });
+
 
 
 
