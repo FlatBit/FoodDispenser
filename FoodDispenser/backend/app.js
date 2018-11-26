@@ -27,6 +27,8 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use(express.json());
+
 
 app.get('/api/order', (req, res, next) => {
   Order.find().then(documents => {
@@ -40,9 +42,12 @@ app.get('/api/order', (req, res, next) => {
 
 app.post('/api/order', (req, res, next) => {
   //MongoDB
+
+  console.log(req.body);      // your JSON
+  res.send(req.body);    // echo the result back
   const order = new Order({
-		productID: 10,
-		amount: 18
+		productID: req.body.productID,
+		amount: req.body.amount
   });
   order.save();
 

@@ -4,7 +4,7 @@
   <table id="userTable" class="table table-striped">
       <thead>
           <tr>
-              <th>Id</th>
+              <th>Product</th>
               <th>Product</th>
               <th>Amount</th>
               <th>Actions</th>
@@ -16,7 +16,7 @@
           <td>{{order.productID}}</td>
           <td>{{order.amount}}</td>
           <td>
-            <button class="btn btn-warning" data-toggle="modal" data-target="#myModal" onclick="showEditModal(' + user.id + ')">Edit</button>
+            <!--<button class="btn btn-warning" data-toggle="modal" data-target="#myModal" onclick="showEditModal(' + user.id + ')">Edit</button>-->
             <h1></h1>
             <button class="btn btn-danger" (click) = "deleteOrder(order.id)">Delete</button>
           </td>
