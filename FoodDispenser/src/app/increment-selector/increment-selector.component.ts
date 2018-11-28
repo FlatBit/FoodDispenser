@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { OrderService } from './../order.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { Observable, observable } from 'rxjs';
+// Models
 import { Product } from '../product.model';
-
+// RXJS
+import { Observable, observable } from 'rxjs';
 
 
 @Component({
@@ -25,8 +25,7 @@ export class IncrementSelectorComponent implements OnInit {
   constructor(
     private orderService: OrderService,
     private route: ActivatedRoute,
-    private location: Location,
-    private http: HttpClient
+    private location: Location
   ) { }
 
   ngOnInit() {
@@ -40,25 +39,20 @@ export class IncrementSelectorComponent implements OnInit {
   }
 
 
-  // TODO: Move this Functions to a service
   loadProduct(): void {
-    // this.product.productID = +this.route.snapshot.paramMap.get('id');
-    this.getProduct(this.id);
-  }
-
-  getProduct(productID: number): void {
-    this.productObservable = this.http.get<Product>(`../../assets/descritpion/${productID}.json`);
+    this.productObservable = this.orderService.getProduct(this.id);
     this.productObservable.subscribe( product => {
       this.product = product;
-      this.incrementBy = this.product.amount;
+      this.incrementBy = this.product.incrementAmount;
       this.infoText = `How much ${this.product.name} do you want?`;
       console.log(this.incrementBy);
       console.log(this.product);
     });
   }
 
-  // Event Handlers
 
+
+  // Event Handlers
   clickHandlerMinus() {
     if (this.amount >= this.incrementBy) {
       this.amount -= this.incrementBy;

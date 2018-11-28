@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+// Models
 import { Order } from './order.model';
+import { Product } from './product.model';
+// RXJS
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
@@ -9,10 +11,6 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
-const x = {
-  sdf: 4,
-  zahl: 'string'
-};
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +37,12 @@ export class OrderService {
           (t: {productID: number, amount: number}) => console.log(JSON.stringify(t))
       );
   }
+
+
+  getProduct(productID: number): Observable<Product> {
+    return this.http.get<Product>(`../../assets/descritpion/${productID}.json`);
+  }
+
 
   getOrders(): Observable<any> {
     return this.http

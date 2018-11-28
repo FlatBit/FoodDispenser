@@ -5,7 +5,9 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, observable } from 'rxjs';
 
 import { OrderService } from './../order.service';
+// Models
 import { Order } from './../order.model';
+import { Product } from './../product.model';
 
 @Component({
   selector: 'app-order-list',
@@ -16,11 +18,13 @@ export class OrderListComponent implements OnInit {
 
   public orders: Order[];
   public orderObservable: Observable<Order[]>;
+  public productObservable: Observable<Product>;
+  public productName: String;
+
 
   constructor(private orderService: OrderService,
               private route: ActivatedRoute,
-              private location: Location,
-              private http: HttpClient) { }
+              private location: Location) { }
 
   ngOnInit() {
     // TODO: Set Observable async
@@ -38,6 +42,10 @@ export class OrderListComponent implements OnInit {
         if (index > -1) {
           this.orders.splice(index, 1);
         }
+  }
+
+  loadProduct(id: number): Observable<Product> {
+    return this.orderService.getProduct(id);
   }
 
 

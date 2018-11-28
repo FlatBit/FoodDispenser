@@ -4,12 +4,12 @@
     <div class="handle-counter" id="handleCounter">
       <button class="counter-minus btn btn-primary" (click)="clickHandlerMinus()">-</button>
       <input type="text" [value]="amount">
-      <button class="counter-plus btn btn-primary" (click)="clickHandlerPlus()">+</button>
+      <button class="counter-plus btn btn-primary"  (click)="clickHandlerPlus()">+</button>
     </div>
   </div>
   <div class="row">
-    <button class="btn" (click)="goBack()">go back</button>
-    <button class="btn" (click)="sendOrder()">Order</button>
+    <button class="btn btn-primary" (click)="goBack()">go back</button>
+    <button class="btn btn-primary" (click)="sendOrder()">Order</button>
   </div>
   <div class="row">
     <p>The id is: </p>

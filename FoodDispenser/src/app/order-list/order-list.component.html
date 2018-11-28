@@ -1,18 +1,18 @@
-<div *ngIf="orderObservable | async as product" class="container"></div>
 
 <div class="container">
   <table id="userTable" class="table table-striped">
       <thead>
           <tr>
-              <th>Product</th>
-              <th>Product</th>
+              <th>ProductName</th>
+              <th>ProductID</th>
               <th>Amount</th>
               <th>Actions</th>
           </tr>
       </thead>
       <tbody id="tableContent">
         <tr *ngFor="let order of orders">
-          <td>{{order.id}}</td>
+          <!--<td>{{(loadProduct(order.productID) | async).name}}</td>-->
+          <td>order.id</td>
           <td>{{order.productID}}</td>
           <td>{{order.amount}}</td>
           <td>
