@@ -1,0 +1,58 @@
+@font-face {
+    font-family: 'LogoFont'; /*a name to be used later*/
+    src: url('../../../Fonts/Lumberjack.otf'); /*URL to font*/
+}
+
+body{
+    background-color: #E7ECEF;
+}
+
+.screen{
+    height: 480px;
+    width: 800px;
+    border: 5px solid black;
+}
+
+.food{
+    height: 180px;
+    width: 180px;
+    border: 2px solid #729EA1;
+}
+
+.vertical-center {
+  min-height: 100%;  
+  min-height: 100vh; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.middle{
+    height: 80px;
+}
+
+#logo{
+    font-size: 40pt;
+    padding-top: 20px;
+    font-family: LogoFont;
+}
+
+.align-center-text{
+    text-align: center;    
+}
+
+.buttons{
+    height: 75px;
+    background-color:#274C77;
+    border-color: #729EA1;
+}
+
+.buttons:hover{
+    background-color:#A3CEF1;
+}
+
+.padding-top-2{
+    padding-top: 2px;
+}
+
+

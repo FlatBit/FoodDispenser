@@ -1,6 +1,4 @@
-
-
-<h2 class="text-center">Choose your item!</h2>
+<!--<h2 class="text-center">Choose your item!</h2>
 <div class="container">
   <div class="row">
     <div class="col-sm">
@@ -11,6 +9,39 @@
     </div>
     <div class="col-sm">
       <button [routerLink]="['incrementselector/3']"> <img style="width:100%; height:100%;" src="../../assets/img/3.jpg">Pistachio</button>
+    </div>
+  </div>
+</div>-->
+<div class="vertical-center">
+  <div class="continer">
+    <div class="row">
+      <div class="food ">
+        <img [routerLink]="['incrementselector/1']" style="width:100%; height:100%;" src="../../assets/img/1.jpg">
+      </div>
+      <div class="food ">
+        <img [routerLink]="['incrementselector/2']" style="width:100%; height:100%;" src="../../assets/img/2.jpg">
+      </div>
+      <div class="food ">
+        <img [routerLink]="['incrementselector/3']" style="width:100%; height:100%;" src="../../assets/img/3.jpg">
+      </div>
+      <div class="food "></div>
+    </div>
+    <div class="middle row">
+      <div class=" col-3 padding-top-2">
+        <button type="button" class=" btn-block btn-primary buttons">PREVIOUS</button>
+      </div>
+
+      <div class="col-6 align-center-text"><span id="logo">Food Dispenser</span></div>
+      <div class="col-3 padding-top-2">
+        <button type="button" class=" btn-block btn-primary buttons ">NEXT</button>
+      </div>
+
+    </div>
+    <div class="row  margin-bottom-20">
+      <div class="food "></div>
+      <div class="food "></div>
+      <div class="food  "></div>
+      <div class="food "></div>
     </div>
   </div>
 </div>
