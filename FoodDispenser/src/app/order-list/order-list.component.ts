@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
-import { Observable, observable } from 'rxjs';
-
+import { Observable } from 'rxjs';
+// Service
 import { OrderService } from './../order.service';
+import { ProductService } from './../product.service';
+
 // Models
 import { Order } from './../order.model';
-import { Product } from './../product.model';
 
 @Component({
   selector: 'app-order-list',
@@ -18,11 +18,11 @@ export class OrderListComponent implements OnInit {
 
   public orders: Order[];
   public orderObservable: Observable<Order[]>;
-  public productObservable: Observable<Product>;
   public productName: String;
 
 
   constructor(private orderService: OrderService,
+              public productService: ProductService,
               private route: ActivatedRoute,
               private location: Location) { }
 
@@ -32,6 +32,7 @@ export class OrderListComponent implements OnInit {
     this.orderObservable.subscribe(orders => {
       this.orders = orders;
     });
+    this.productService.loadProducts();
   }
 
   deleteOrder(id: string) {
@@ -43,11 +44,5 @@ export class OrderListComponent implements OnInit {
           this.orders.splice(index, 1);
         }
   }
-
-  loadProduct(id: number): Observable<Product> {
-    return this.orderService.getProduct(id);
-  }
-
-
 
 }

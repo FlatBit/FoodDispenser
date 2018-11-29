@@ -47,12 +47,13 @@ app.post('/api/order', (req, res, next) => {
   res.send(req.body);    // echo the result back
   const order = new Order({
 		productID: req.body.productID,
-		amount: req.body.amount
+    amount: req.body.amount,
+    time: Date.now()
   });
   order.save();
 
   res.status(201);
-  res.send({ message: "Message received!"});
+  //res.send({ message: "Message received!"});
   /*
   ps.PythonShell.run('motor.py', { args: ['10'] }, function (err, results){
     console.log(err);

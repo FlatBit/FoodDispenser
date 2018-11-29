@@ -1,26 +1,29 @@
-
-<div class="container">
-  <table id="userTable" class="table table-striped">
-      <thead>
-          <tr>
-              <th>ProductName</th>
-              <th>ProductID</th>
-              <th>Amount</th>
-              <th>Actions</th>
+<div *ngIf="productService.productsReady.getValue()" class="container">
+  <div class="container">
+    <table id="userTable" class="table table-striped">
+        <thead>
+            <tr>
+                <th>ProductName</th>
+                <th>ProductID</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="tableContent">
+          <tr *ngFor="let order of orders">
+            <!--<td>{{(loadProduct(order.productID) | async).name}}</td>-->
+            <td>{{productService.products[order.productID - 1].name}}</td>
+            <td>{{order.productID}}</td>
+            <td>{{order.amount}}</td>
+            <td>{{order.time}}</td>
+            <td>
+              <!--<button class="btn btn-warning" data-toggle="modal" data-target="#myModal" onclick="showEditModal(' + user.id + ')">Edit</button>-->
+              <h1></h1>
+              <button class="btn btn-danger" (click) = "deleteOrder(order.id)">Delete</button>
+            </td>
           </tr>
-      </thead>
-      <tbody id="tableContent">
-        <tr *ngFor="let order of orders">
-          <!--<td>{{(loadProduct(order.productID) | async).name}}</td>-->
-          <td>order.id</td>
-          <td>{{order.productID}}</td>
-          <td>{{order.amount}}</td>
-          <td>
-            <!--<button class="btn btn-warning" data-toggle="modal" data-target="#myModal" onclick="showEditModal(' + user.id + ')">Edit</button>-->
-            <h1></h1>
-            <button class="btn btn-danger" (click) = "deleteOrder(order.id)">Delete</button>
-          </td>
-        </tr>
-      </tbody>
-  </table>
+        </tbody>
+    </table>
+  </div>
 </div>

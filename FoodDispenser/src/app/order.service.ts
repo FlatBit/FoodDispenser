@@ -52,7 +52,8 @@ export class OrderService {
           return {
             id: post._id,
             productID: post.productID,
-            amount: post.amount
+            amount: post.amount,
+            time: post.time
           };
         });
     }));

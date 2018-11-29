@@ -9,28 +9,26 @@ const MAX_PRODUCTS = 3;
   providedIn: 'root'
 })
 export class ProductService {
-  /*
-  private BehaviourSubject<boolean> productsReady = new BehaviourSubject(false);
-  public
+
+  public productsReady: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  private x = 0;
+  public products: Product[] = new Array(MAX_PRODUCTS);
   constructor(private http: HttpClient) { }
-
-
 
   loadProducts(): void {
 
-    productsReady.next(true);
+    // this.productsReady.next(true);
 
-    let x = 0;
+    for (let i = 0; i < MAX_PRODUCTS; i++) {
+        this.http.get<Product>(`../../assets/descritpion/${i + 1}.json`)
+          .subscribe((product) => {
+            this.products[i] = product;
+          });
 
-    for ( let i = 0; i < MAX_PRODUCTS; i++ ) {
-        this.http.get<Product>(`../../assets/descritpion/${i}.json`);
-        jsonsubsribe() {
-            x++;
-        }
-        if(x = MAX_PRODUCTS) {
-            this.productsReady.next(true)
+        if (this.x = MAX_PRODUCTS) {
+            this.productsReady.next(true);
         }
     }
   }
-  */
+
 }
