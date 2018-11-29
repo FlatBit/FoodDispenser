@@ -18,7 +18,7 @@ export class IncrementSelectorComponent implements OnInit {
   public amount = 0;
   private id = 0;
   public product: Product;
-  public calcPrice: number;
+  public calcPrice: number = 0;
   public productObservable: Observable<Product>;
   private incrementBy = 0;
 
@@ -70,7 +70,7 @@ export class IncrementSelectorComponent implements OnInit {
   }
 
   calculatePrice(): void {
-    this.calcPrice = (+this.product.price / 100 ) * this.amount;
+    this.calcPrice = +((+this.product.price / 100 ) * this.amount).toFixed(2);
   }
 
 }
