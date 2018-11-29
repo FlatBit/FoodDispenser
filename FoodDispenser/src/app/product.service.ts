@@ -1,19 +1,29 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+// Model
+import { Product } from './product.model';
 
+const MAX_PRODUCTS = 3;
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-
-  constructor() { }
   /*
-  BehaviourSubject<boolean> productsReady = new BehaviourSubject(false);
+  private BehaviourSubject<boolean> productsReady = new BehaviourSubject(false);
+  public
+  constructor(private http: HttpClient) { }
+
+
+
+  loadProducts(): void {
 
     productsReady.next(true);
 
     let x = 0;
 
-    for(i bis 3) {
+    for ( let i = 0; i < MAX_PRODUCTS; i++ ) {
+        this.http.get<Product>(`../../assets/descritpion/${i}.json`);
         jsonsubsribe() {
             x++;
         }
@@ -21,5 +31,6 @@ export class ProductService {
             this.productsReady.next(true)
         }
     }
-    */
+  }
+  */
 }

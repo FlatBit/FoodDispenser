@@ -18,9 +18,9 @@ export class IncrementSelectorComponent implements OnInit {
   public amount = 0;
   private id = 0;
   public product: Product;
+  public calcPrice: number;
   public productObservable: Observable<Product>;
-  private incrementBy = 15;
-  public infoText = '';
+  private incrementBy = 0;
 
   constructor(
     private orderService: OrderService,
@@ -43,13 +43,6 @@ export class IncrementSelectorComponent implements OnInit {
     this.productObservable = this.orderService.getProduct(this.id);
     this.productObservable.subscribe( product => {
       this.product = product;
-      console.log('Product Name: ' + product.name);
-      console.log('Product ID: ' + product.productID);
-      console.log('Product Amount: ' + product.incrementAmount);
-      this.incrementBy = +this.product.incrementAmount;
-      this.infoText = `How much ${this.product.name} do you want?`;
-      console.log(this.incrementBy);
-      console.log(this.product);
     });
   }
 
@@ -57,14 +50,15 @@ export class IncrementSelectorComponent implements OnInit {
 
   // Event Handlers
   clickHandlerMinus() {
-    if (this.amount >= this.incrementBy) {
-      this.amount -= this.incrementBy;
+    if (this.amount >= this.product.incrementAmount) {
+      this.amount -= this.product.incrementAmount;
+      this.calculatePrice();
     }
   }
 
   clickHandlerPlus() {
-    this.amount += +this.incrementBy;
-    console.log(this.amount);
+    this.amount += +this.product.incrementAmount;
+    this.calculatePrice();
   }
 
   sendOrder(): void {
@@ -75,5 +69,8 @@ export class IncrementSelectorComponent implements OnInit {
     this.location.back();
   }
 
+  calculatePrice(): void {
+    this.calcPrice = (+this.product.price / 100 ) * this.amount;
+  }
 
 }

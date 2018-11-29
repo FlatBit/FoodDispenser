@@ -1,5 +1,6 @@
 {
   "productID": "2",
   "name": "Hazelnut",
-  "incrementAmount": "10"
+  "incrementAmount": "10",
+  "price": "6"
 }
