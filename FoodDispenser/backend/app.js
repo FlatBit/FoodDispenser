@@ -52,7 +52,7 @@ app.post('/api/order', (req, res, next) => {
   order.save();
 
   res.status(201);
-  res.send({ message: "Message received!"});
+  //res.send({ message: "Message received!"});
   /*
   ps.PythonShell.run('motor.py', { args: ['10'] }, function (err, results){
     console.log(err);
