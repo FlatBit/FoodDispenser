@@ -1,5 +1,5 @@
 {
   "productID": "1",
   "name": "Peanuts",
-  "amount": "15"
+  "incrementAmount": "15"
 }
