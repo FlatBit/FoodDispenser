@@ -43,7 +43,10 @@ export class IncrementSelectorComponent implements OnInit {
     this.productObservable = this.orderService.getProduct(this.id);
     this.productObservable.subscribe( product => {
       this.product = product;
-      this.incrementBy = this.product.incrementAmount;
+      console.log('Product Name: ' + product.name);
+      console.log('Product ID: ' + product.productID);
+      console.log('Product Amount: ' + product.incrementAmount);
+      this.incrementBy = +this.product.incrementAmount;
       this.infoText = `How much ${this.product.name} do you want?`;
       console.log(this.incrementBy);
       console.log(this.product);
