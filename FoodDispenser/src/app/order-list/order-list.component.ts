@@ -35,6 +35,14 @@ export class OrderListComponent implements OnInit {
     this.productService.loadProducts();
   }
 
+  extractYear(order: Order): String {
+    return order.time.getFullYear().toString() + ' ' + (order.time.getMonth() + 1).toString() + ' ' + order.time.getDate().toString();
+  }
+
+  extractTime(order: Order): String {
+    return order.time.getHours().toString() + ':' + order.time.getMinutes().toString();
+  }
+
   deleteOrder(id: string) {
     this.orderService.deleteOrder(id);
     const element = this.orders.find(orderElement => orderElement.id === id);

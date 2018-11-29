@@ -53,7 +53,7 @@ export class OrderService {
             id: post._id,
             productID: post.productID,
             amount: post.amount,
-            time: post.time
+            time: new Date(post.time)
           };
         });
     }));

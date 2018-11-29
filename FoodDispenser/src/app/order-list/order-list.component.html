@@ -7,6 +7,7 @@
                 <th>ProductID</th>
                 <th>Amount</th>
                 <th>Date</th>
+                <th>Time</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -16,7 +17,8 @@
             <td>{{productService.products[order.productID - 1].name}}</td>
             <td>{{order.productID}}</td>
             <td>{{order.amount}}</td>
-            <td>{{order.time}}</td>
+            <td>{{extractYear(order)}}</td>
+            <td>{{extractTime(order)}}</td>
             <td>
               <!--<button class="btn btn-warning" data-toggle="modal" data-target="#myModal" onclick="showEditModal(' + user.id + ')">Edit</button>-->
               <h1></h1>
