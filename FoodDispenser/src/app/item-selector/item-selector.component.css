@@ -17,6 +17,8 @@ body{
     height: 180px;
     width: 180px;
     border: 2px solid #729EA1;
+    margin-left: 30px;
+    margin-right: 30px;
 }
 
 .vertical-center {
@@ -28,7 +30,8 @@ body{
 }
 
 .middle{
-    height: 80px;
+    margin-top: 10px;
+    height: 90px;
 }
 
 #logo{
