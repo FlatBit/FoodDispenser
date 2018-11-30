@@ -13,8 +13,7 @@
         </thead>
         <tbody id="tableContent">
           <tr *ngFor="let order of orders">
-            <!--<td>{{(loadProduct(order.productID) | async).name}}</td>-->
-            <td>{{productService.products[order.productID - 1].name}}</td>
+            <td>{{productService.products[order.productID - 1]}}</td>
             <td>{{order.productID}}</td>
             <td>{{order.amount}}</td>
             <td>{{extractYear(order)}}</td>

@@ -18,7 +18,7 @@ export class IncrementSelectorComponent implements OnInit {
   public amount = 0;
   private id = 0;
   public product: Product;
-  public calcPrice: number = 0;
+  public calcPrice = 0;
   public productObservable: Observable<Product>;
   private incrementBy = 0;
 
