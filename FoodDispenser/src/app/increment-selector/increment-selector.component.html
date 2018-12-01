@@ -24,7 +24,7 @@
   <div *ngIf="productObservable | async as product" class="container">
     <div class="row padding-top-20">
       <div class="col-3 ">
-          <button type="button" class=" btn-block btn-primary buttons btn-modifier" (click)="clickHandlerMinus()">-</button>
+          <button type="button" class=" btn-block btn-primary buttons btn-modifier" (click)="clickHandlerMinus()" [disabled]="isDisabled()">-</button>
       </div>
       <div class="col-6">
           <div class="row">
@@ -41,7 +41,7 @@
 
           <div class="row">
             <div class="col-11 text-align-right">
-              <span id="price"> {{calcPrice}} kr.</span> <!----------------PRICE-------->
+              <span id="price"> {{calcPrice}} kr.</span>
             </div>
           </div>
       </div>

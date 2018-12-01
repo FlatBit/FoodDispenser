@@ -18,9 +18,10 @@ export class IncrementSelectorComponent implements OnInit {
   public amount = 0;
   private id = 0;
   public product: Product;
-  public calcPrice = 0;
+  public calcPrice = "0";
   public productObservable: Observable<Product>;
   private incrementBy = 0;
+  public minusDisabled = true;
 
   constructor(
     private orderService: OrderService,
@@ -36,6 +37,7 @@ export class IncrementSelectorComponent implements OnInit {
       this.id = params['id'];
     });
    this.loadProduct();
+
   }
 
 
@@ -54,11 +56,17 @@ export class IncrementSelectorComponent implements OnInit {
       this.amount -= this.product.incrementAmount;
       this.calculatePrice();
     }
+    if(this.amount == 0){
+      this.minusDisabled = true;
+    }
   }
 
   clickHandlerPlus() {
     this.amount += +this.product.incrementAmount;
     this.calculatePrice();
+    if(this.minusDisabled){
+      this.minusDisabled = false;
+    }
   }
 
   sendOrder(): void {
@@ -70,7 +78,11 @@ export class IncrementSelectorComponent implements OnInit {
   }
 
   calculatePrice(): void {
-    this.calcPrice = +((+this.product.price / 100 ) * this.amount).toFixed(2);
+    this.calcPrice = ((+this.product.price / 100 ) * this.amount).toFixed(2);
+  }
+  
+  isDisabled(): boolean {
+    return this.minusDisabled;
   }
 
 }
