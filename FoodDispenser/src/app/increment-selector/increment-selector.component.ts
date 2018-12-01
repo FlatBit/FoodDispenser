@@ -71,6 +71,8 @@ export class IncrementSelectorComponent implements OnInit {
 
   sendOrder(): void {
     this.orderService.sendOrder({productID: this.product.productID, amount: this.amount});
+    this.amount = 0;
+    this.calculatePrice();
   }
 
   goBack(): void {
