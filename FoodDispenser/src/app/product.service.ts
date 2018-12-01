@@ -16,16 +16,16 @@ export class ProductService {
 
   loadProducts(): void {
     if (!this.productsReady.getValue()) {
-      for (let i = 0; i < MAX_PRODUCTS; i++) {
-        this.http.get<Product>(`../../assets/descritpion/${i + 1}.json`)
+      for (let i = 1; i <= MAX_PRODUCTS; i++) {
+        this.http.get<Product>(`../../assets/descritpion/${i}.json`)
           .subscribe((product) => {
-            this.products[i] = product;
+            this.products[i - 1] = product;
           });
 
         if (i = MAX_PRODUCTS) {
             this.productsReady.next(true);
         }
-    }
+      }
     } else {
       return;
     }
