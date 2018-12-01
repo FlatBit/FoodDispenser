@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { IncrementSelectorComponent } from './increment-selector/increment-selector.component';
 import { ItemSelectorComponent } from './item-selector/item-selector.component';
 import { OrderListComponent } from './order-list/order-list.component';
+import { SingleItemComponent } from './single-item/single-item.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { OrderListComponent } from './order-list/order-list.component';
     AppComponent,
     IncrementSelectorComponent,
     ItemSelectorComponent,
-    OrderListComponent
+    OrderListComponent,
+    SingleItemComponent
   ],
   imports: [
     BrowserModule,
