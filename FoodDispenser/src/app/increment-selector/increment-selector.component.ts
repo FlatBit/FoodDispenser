@@ -42,7 +42,6 @@ export class IncrementSelectorComponent implements OnInit {
 
   }
 
-
   loadProduct(): void {
     this.productObservable = this.orderService.getProduct(this.id);
     this.productObservable.subscribe( product => {
