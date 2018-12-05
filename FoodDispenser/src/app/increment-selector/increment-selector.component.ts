@@ -19,8 +19,13 @@ export class IncrementSelectorComponent implements OnInit {
   private id = 0;
   public amount = 0;
   public product: Product;
-  public calcPrice = 0;
+  public calcPrice = "0";
   public productObservable: Observable<Product>;
+<<<<<<< HEAD
+=======
+  private incrementBy = 0;
+  public minusDisabled = true;
+>>>>>>> f345fc4180857432d68c723c746de4b81ad12917
 
   constructor(
     private orderService: OrderService,
@@ -36,6 +41,7 @@ export class IncrementSelectorComponent implements OnInit {
       this.id = params['id'];
     });
    this.loadProduct();
+
   }
 
 
@@ -53,17 +59,29 @@ export class IncrementSelectorComponent implements OnInit {
       this.rotation--;
       this.calculatePrice();
     }
+    if(this.amount == 0){
+      this.minusDisabled = true;
+    }
   }
 
   clickHandlerPlus() {
     this.amount += +this.product.incrementAmount;
     this.rotation++;
     this.calculatePrice();
+    if(this.minusDisabled){
+      this.minusDisabled = false;
+    }
   }
 
   sendOrder(): void {
+<<<<<<< HEAD
     this.orderService.sendOrder({productID: this.product.productID, amount: this.amount, rotation: this.rotation})
       .subscribe((data) => this.location.back());
+=======
+    this.orderService.sendOrder({productID: this.product.productID, amount: this.amount});
+    this.amount = 0;
+    this.calculatePrice();
+>>>>>>> f345fc4180857432d68c723c746de4b81ad12917
   }
 
   goBack(): void {
@@ -71,7 +89,11 @@ export class IncrementSelectorComponent implements OnInit {
   }
 
   calculatePrice(): void {
-    this.calcPrice = +((+this.product.price / 100 ) * this.amount).toFixed(2);
+    this.calcPrice = ((+this.product.price / 100 ) * this.amount).toFixed(2);
+  }
+  
+  isDisabled(): boolean {
+    return this.minusDisabled;
   }
 
 }
