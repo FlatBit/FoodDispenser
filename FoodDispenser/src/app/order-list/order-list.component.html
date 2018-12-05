@@ -1,4 +1,4 @@
-<div *ngIf="productService.productsReady.getValue()" class="container">
+<div *ngIf="orderObservable | async" class="container">
   <div class="container">
     <table id="userTable" class="table table-striped">
         <thead>
@@ -11,15 +11,14 @@
                 <th>Actions</th>
             </tr>
         </thead>
-        <tbody id="tableContent">
+        <tbody *ngIf="productService.productsReady.getValue()" id="tableContent">
           <tr *ngFor="let order of orders">
-            <td>{{productService.products[order.productID - 1]}}</td>
+            <td>{{productService.products[order.productID - 1].name}}</td>
             <td>{{order.productID}}</td>
             <td>{{order.amount}}</td>
             <td>{{order.time | date}}</td>
             <td>{{order.time | date: 'shortTime' : 'GMT+1'}}</td>
             <td>
-              <!--<button class="btn btn-warning" data-toggle="modal" data-target="#myModal" onclick="showEditModal(' + user.id + ')">Edit</button>-->
               <h1></h1>
               <button class="btn btn-danger" (click) = "deleteOrder(order.id)">Delete</button>
             </td>

@@ -23,19 +23,11 @@ export class OrderService {
   constructor(private http: HttpClient) { }
 
 
-  // TODO: Change Return Type
-  sendOrder(order: any) {
+  // TODO: Change Return Type could be an Observable
+  sendOrder(order: any): Observable<any> {
     console.log('Send order to host');
-    /*
-    this.http.post<{ message: string }>(this.orderUrl, order, httpOptions)
-      .subscribe((message) => {
-        console.log(message.message);
-      });
-    */
       const options = {headers: {'Content-Type': 'application/json'}};
-      this.http.post<{productID: number, amount: number}>(this.orderUrl, JSON.stringify(order), options).subscribe(
-          (t: {productID: number, amount: number}) => console.log(JSON.stringify(t))
-      );
+      return this.http.post<{productID: number, amount: number}>(this.orderUrl, JSON.stringify(order), options);
   }
 
 

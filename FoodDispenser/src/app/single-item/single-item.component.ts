@@ -14,8 +14,8 @@ export class SingleItemComponent implements OnInit {
   @Input() public id;
   public productObservable: Observable<Product>;
 
-  public name = "--";
-  public price = "--";
+  public name = '--';
+  public price = '--';
   public ammount = 0;
   public backGround;;
 

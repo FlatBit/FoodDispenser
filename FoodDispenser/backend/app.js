@@ -42,7 +42,6 @@ app.get('/api/order', (req, res, next) => {
 
 app.post('/api/order', (req, res, next) => {
   //MongoDB
-
   console.log(req.body);      // your JSON
   res.send(req.body);    // echo the result back
   const order = new Order({
@@ -53,13 +52,11 @@ app.post('/api/order', (req, res, next) => {
   order.save();
 
   res.status(201);
-  //res.send({ message: "Message received!"});
-  /*
-  ps.PythonShell.run('motor.py', { args: ['10'] }, function (err, results){
+
+  ps.PythonShell.run('motor.py', { args: ['req.body.rotation'] }, function (err, results){
     console.log(err);
     console.log(results);
   });
-  */
 });
 
 app.delete("/api/order/:orderID", (req, res, next) => {

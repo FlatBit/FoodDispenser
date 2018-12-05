@@ -32,11 +32,6 @@ export class OrderListComponent implements OnInit {
     this.orderObservable.subscribe(orders => {
       this.orders = orders;
     });
-    this.productService.loadProducts();
-  }
-
-  extractTime(order: Order): String {
-    return order.time.getHours().toString() + ':' + order.time.getMinutes().toString();
   }
 
   deleteOrder(id: string) {

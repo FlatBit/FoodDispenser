@@ -15,12 +15,12 @@ import { Observable, observable } from 'rxjs';
 })
 export class IncrementSelectorComponent implements OnInit {
 
-  public amount = 0;
+  private rotation = 0;
   private id = 0;
+  public amount = 0;
   public product: Product;
   public calcPrice = 0;
   public productObservable: Observable<Product>;
-  private incrementBy = 0;
 
   constructor(
     private orderService: OrderService,
@@ -46,23 +46,24 @@ export class IncrementSelectorComponent implements OnInit {
     });
   }
 
-
-
   // Event Handlers
   clickHandlerMinus() {
     if (this.amount >= this.product.incrementAmount) {
       this.amount -= this.product.incrementAmount;
+      this.rotation--;
       this.calculatePrice();
     }
   }
 
   clickHandlerPlus() {
     this.amount += +this.product.incrementAmount;
+    this.rotation++;
     this.calculatePrice();
   }
 
   sendOrder(): void {
-    this.orderService.sendOrder({productID: this.product.productID, amount: this.amount});
+    this.orderService.sendOrder({productID: this.product.productID, amount: this.amount, rotation: this.rotation})
+      .subscribe((data) => this.location.back());
   }
 
   goBack(): void {
