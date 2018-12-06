@@ -22,6 +22,17 @@
 
 <div class="vertical-center">
   <div *ngIf="productObservable | async as product" class="container">
+    <!-- Template for Modal View -->
+    <ng-template #content let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Please wait!</h4>
+      </div>
+      <div class="modal-body">
+        <p> Order is in process</p>
+      </div>
+    </ng-template>
+
+    <!-- Website -->
     <div class="row padding-top-20">
       <div class="col-3 ">
           <button type="button" class=" btn-block btn-primary buttons btn-modifier" (click)="clickHandlerMinus()" [disabled]="isDisabled()">-</button>
@@ -55,7 +66,7 @@
       </div>
         <div class="col-6 text-align-center"><span id="logo">Food Dispenser</span></div>
         <div class="col-3">
-            <button type="button" class=" btn-block btn-primary buttons" (click)="sendOrder()">BUY</button>
+            <button type="button" class=" btn-block btn-primary buttons" (click)="sendOrder(content)">BUY</button>
         </div>
     </div>
   </div>
