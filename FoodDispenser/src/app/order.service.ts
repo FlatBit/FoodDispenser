@@ -35,7 +35,6 @@ export class OrderService {
     return this.http.get<Product>(`../../assets/descritpion/${productID}.json`);
   }
 
-
   getOrders(): Observable<any> {
     return this.http
     .get<any>(this.orderUrl)
@@ -49,6 +48,24 @@ export class OrderService {
           };
         });
     }));
+  }
+
+  getProductOrders(productID: number) {
+    console.log('ProductID Service: ' + productID);
+    console.log('ProductUrl: ' + this.orderUrl + '/' + productID);
+    return this.http
+    .get<any>(this.orderUrl + '/' + productID)
+    .pipe(map((orderData) => {
+      return orderData.posts.map(post => {
+        return {
+          id: post._id,
+          productID: post.productID,
+          amount: post.amount,
+          time: new Date(post.time)
+        };
+      });
+    }));
+
   }
 
   deleteOrder(orderID: string) {

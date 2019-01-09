@@ -29,7 +29,7 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
-
+// get all Orders
 app.get('/api/order', (req, res, next) => {
   Order.find().then(documents => {
 		res.status(200).json({
@@ -37,6 +37,16 @@ app.get('/api/order', (req, res, next) => {
 			posts: documents
 		});
 	});
+});
+
+// get only the Orders with a specific item ID
+app.get('/api/order/:id', (req, res, next) => {
+  Order.find().where('productID').equals(req.params.id).then(documents => {
+    res.status(200).json({
+      message: "Orders with the ID: " + req.params.id,
+      posts: documents
+    });
+  });
 });
 
 

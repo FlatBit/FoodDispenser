@@ -44,4 +44,15 @@ export class OrderListComponent implements OnInit {
         }
   }
 
+  filterOrder(all: boolean, id: number) {
+    if (all) {
+      this.ngOnInit();
+    } else {
+      this.orderObservable = this.orderService.getProductOrders(id);
+      this.orderObservable.subscribe(orders => {
+        this.orders = orders;
+      });
+    }
+  }
+
 }
