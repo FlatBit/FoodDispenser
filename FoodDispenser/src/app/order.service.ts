@@ -27,7 +27,7 @@ export class OrderService {
   sendOrder(order: any): Observable<any> {
     console.log('Send order to host');
       const options = {headers: {'Content-Type': 'application/json'}};
-      return this.http.post<{productID: number, amount: number}>(this.orderUrl, JSON.stringify(order), options);
+      return this.http.post<{productID: number, amount: number, rotation: number}>(this.orderUrl, JSON.stringify(order), options);
   }
 
 

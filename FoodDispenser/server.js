@@ -1,6 +1,7 @@
 const app = require("./backend/app");
 const debug = require("debug")("node-angular");
 const http = require("http");
+const ps = require('python-shell');
 
 const normalizePort = val => {
   var port = parseInt(val, 10);
@@ -53,3 +54,7 @@ server.on("error", onError);
 server.on("listening", onListening);
 server.listen(port);
 console.log('Server is running on Port: ' + port);
+ps.PythonShell.run('setupMotor.py', null, function (err, results){
+  console.log(err);
+  console.log(results);
+});
