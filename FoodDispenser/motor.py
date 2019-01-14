@@ -15,15 +15,9 @@ GPIO.setup(ENA, GPIO.OUT)
 
 quarters = sys.argv[1]
 
-<<<<<<< HEAD
 SleepTime = 0.0035 * 4 
 stepMul = 4 / 4 * int(quarters)
 StepsPerRotation = 200 * stepMul / 4 
-=======
-SleepTime = 0.0035 * 4
-stepMul = 4 / 4 * int(quarters)
-StepsPerRotation = 200 * stepMul / 4
->>>>>>> b5712e329ebab44f82c1f07189a5a1b13bbbee09
 
 GPIO.output(ENA, GPIO.LOW) #Unlock the motor
 GPIO.output(DIR, GPIO.HIGH) #Set rotation direction counter-clockwise
