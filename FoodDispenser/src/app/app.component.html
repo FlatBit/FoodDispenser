@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand navbar-dark bg-dark">
+<nav class="navbar navbar-expand navbar-dark bg-dark" id="bigNav">
   <a class="navbar-brand" [routerLink]="['']">Fooddispenser</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -7,6 +7,9 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['/orders']">Orders</a>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link" id="HIDE" (click)="clickHandlerFullScreen()">Go Full Screen</button>
       </li>
     </ul>
   </div>

@@ -7,4 +7,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'FoodDispenser';
+
+  clickHandlerFullScreen(){
+    let nav = document.getElementById("bigNav");
+    nav.style.display="none";
+    let elem = document.documentElement;
+    let methodToBeInvoked = elem.requestFullscreen ||
+                            (<any>elem).webkitRequestFullscreen || 
+                            elem['mozRequestFullscreen'] ||
+                            elem['msRequestFullscreen'];
+        if (methodToBeInvoked){
+          methodToBeInvoked.call(elem);
+        }          
+  }
 }

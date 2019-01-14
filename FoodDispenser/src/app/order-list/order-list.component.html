@@ -1,5 +1,20 @@
 <div *ngIf="orderObservable | async" class="container">
+
+
   <div class="container">
+      <div class="btn-group py-1" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-secondary" (click)="filterOrder(true, 0)">All</button>
+        <button type="button" class="btn btn-secondary" (click)="filterOrder(false, 1)">1</button>
+        <button type="button" class="btn btn-secondary" (click)="filterOrder(false, 2)">2</button>
+        <button type="button" class="btn btn-secondary" (click)="filterOrder(false, 3)">3</button>
+        <button type="button" class="btn btn-secondary" (click)="filterOrder(false, 4)">4</button>
+        <button type="button" class="btn btn-secondary" (click)="filterOrder(false, 5)">5</button>
+        <button type="button" class="btn btn-secondary" (click)="filterOrder(false, 6)">6</button>
+      </div>
+  </div>
+
+  <div class="container">
+    <!-- <button class="btn" >Filter</button> -->
     <table id="userTable" class="table table-striped">
         <thead>
             <tr>

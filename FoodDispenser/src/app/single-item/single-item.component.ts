@@ -17,7 +17,7 @@ export class SingleItemComponent implements OnInit {
   public name = '--';
   public price = '--';
   public ammount = 0;
-  public backGround;;
+  public backGround;
 
   constructor(
     private orderService: OrderService

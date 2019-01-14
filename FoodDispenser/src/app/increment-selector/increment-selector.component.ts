@@ -4,8 +4,10 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 // Models
 import { Product } from '../product.model';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 // RXJS
-import { Observable, observable } from 'rxjs';
+import { Observable } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
 
 @Component({
@@ -27,6 +29,7 @@ export class IncrementSelectorComponent implements OnInit {
 
   constructor(
     private orderService: OrderService,
+    private modelService: NgbModal,
     private route: ActivatedRoute,
     private location: Location
   ) { }
@@ -41,7 +44,6 @@ export class IncrementSelectorComponent implements OnInit {
    this.loadProduct();
 
   }
-
 
   loadProduct(): void {
     this.productObservable = this.orderService.getProduct(this.id);
@@ -71,9 +73,14 @@ export class IncrementSelectorComponent implements OnInit {
     }
   }
 
-  sendOrder(): void {
+  sendOrder(content: any): void {
+    this.modelService.open(content, { centered: true});
     this.orderService.sendOrder({productID: this.product.productID, amount: this.amount, rotation: this.rotation})
-      .subscribe((data) => this.location.back());
+      .pipe(delay(4000))
+      .subscribe((data) => {
+        this.modelService.dismissAll();
+        this.location.back();
+      });
   }
 
   goBack(): void {

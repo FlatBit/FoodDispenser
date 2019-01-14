@@ -27,13 +27,18 @@ GPIO.output(ENA, GPIO.LOW)
 # Set rotation direction counter-clockwise
 GPIO.output(DIR, GPIO.HIGH) 
 
-# 200 steps 1 second:
+# 800 steps 6 second:
 # 1 step = 2 sleeping times
-# step time = 1s / 200 
-# sleep time: timePerQuarter / stepPerQuarter / 2
+# step time = 6s / 800 
+# sleep time: revolution time / step per revolution / 2
 
+<<<<<<< HEAD
 SleepTime = 0.01
 stepMul = 1
+=======
+SleepTime = 0.00375
+stepMul = 4
+>>>>>>> b5712e329ebab44f82c1f07189a5a1b13bbbee09
 StepsPerRotation = 200 * stepMul
 
 Spinning = True
@@ -41,34 +46,22 @@ Spinning = True
 def sensorCallback1(channel):
 # Called if sensor output goes LOW
     global Spinning
-    #timestamp = time.time()
-    #stamp = datetime.datetime.fromtimestamp(timestamp).strftime('%H:%M:%S')
-    #print ("Sensor LOW " + stamp)
     print ("Starting Position Found")
     Spinning = False
 
 def sensorCallback2(channel):
 # Called if sensor output goes HIGH
     global Spinning
-    timestamp = time.time()
-    stamp = datetime.datetime.fromtimestamp(timestamp).strftime('%H:%M:%S')
-    print ("Sensor HIGH " + stamp)
+    print ("Starting Position Found")
     Spinning = False
 
 def main():
-# Wrap main content in a try block so we can
-# catch the user pressing CTRL-C and run the
-# GPIO cleanup function. This will also prevent
-# the user seeing lots of unnecessary error
-# messages.
-
     GPIO.add_event_detect(MAG, GPIO.FALLING, callback=sensorCallback1)
    # GPIO.add_event_detect(MAG, GPIO.RISING, callback=sensorCallback2)
 
 main()
 
 try:
-# Loop until users quits with CTRL-C
     while Spinning :
         GPIO.output(PUL, GPIO.HIGH)
         time.sleep(SleepTime)
@@ -78,7 +71,7 @@ try:
 
 
 except KeyboardInterrupt:
-# Reset GPIO settings
+# Reset GPIO settings if user interupt with CTL-C
     GPIO.cleanup()
 
 time.sleep(1)

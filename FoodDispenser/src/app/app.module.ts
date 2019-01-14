@@ -4,11 +4,12 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { IncrementSelectorComponent } from './increment-selector/increment-selector.component';
 import { ItemSelectorComponent } from './item-selector/item-selector.component';
 import { OrderListComponent } from './order-list/order-list.component';
 import { SingleItemComponent } from './single-item/single-item.component';
+
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { SingleItemComponent } from './single-item/single-item.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
