@@ -32,8 +32,8 @@ GPIO.output(DIR, GPIO.HIGH)
 # step time = 1s / 200 
 # sleep time: timePerQuarter / stepPerQuarter / 2
 
-SleepTime = 0.0025
-stepMul = 4
+SleepTime = 0.01
+stepMul = 1
 StepsPerRotation = 200 * stepMul
 
 Spinning = True
@@ -84,7 +84,7 @@ except KeyboardInterrupt:
 time.sleep(1)
 print("Spinning 1 quarter to properly set-up")
 i = 0
-while i < 200 :
+while i < 50 :
     i+=1
     GPIO.output(PUL, GPIO.HIGH)
     time.sleep(SleepTime)
