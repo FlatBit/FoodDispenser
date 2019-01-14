@@ -32,8 +32,8 @@ GPIO.output(DIR, GPIO.HIGH)
 # step time = 6s / 800 
 # sleep time: revolution time / step per revolution / 2
 
-SleepTime = 0.00375
-stepMul = 4
+SleepTime = 0.01
+stepMul = 1
 StepsPerRotation = 200 * stepMul
 
 Spinning = True
