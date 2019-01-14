@@ -62,8 +62,8 @@ app.post('/api/order', (req, res, next) => {
   order.save();
 
   res.status(201);
-
-  ps.PythonShell.run('motor.py', { args: ['req.body.rotation'] }, function (err, results){
+  let rotation = req.body.rotation;
+  ps.PythonShell.run('motor.py', { args: [rotation] }, function (err, results){
     console.log(err);
     console.log(results);
   });

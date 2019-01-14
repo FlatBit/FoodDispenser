@@ -14,7 +14,7 @@ GPIO.setup(DIR, GPIO.OUT)
 GPIO.setup(ENA, GPIO.OUT)
 
 quarters = sys.argv[1]
-
+print(quarters)
 SleepTime = 0.0035 * 4 
 stepMul = 4 / 4 * int(quarters)
 StepsPerRotation = 200 * stepMul / 4 
